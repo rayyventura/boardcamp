@@ -2,18 +2,19 @@ import { connection } from "../database.js";
 import dayjs from "dayjs";
 
 export async function getRentals(req, res) {
-  const { customerId, gameId } = req.query;
+  const { customerid, gameid } = req.query;
   try {
     const params = [];
     const conditions = [];
-    const where = "";
-
-    if (customerId) {
-      params.push(customerId);
+    let where = "";
+    console.log(customerid);
+    console.log(gameid);
+    if (customerid) {
+      params.push(customerid);
       conditions.push(`rentals."customerId"=$${params.length}`);
     }
-    if (gameId) {
-      params.push(gameId);
+    if (gameid) {
+      params.push(gameid);
       conditions.push(`rentals."gameId"=$${params.length}`);
     }
 
